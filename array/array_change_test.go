@@ -3,7 +3,7 @@
  * @Date: 2022/4/14 16:24
  */
 
-package main
+package array
 
 import (
 	"log"

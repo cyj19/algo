@@ -3,7 +3,7 @@
  * @Date: 2022/4/14 8:55
  */
 
-package main
+package link
 
 /**
 链表：一个数据连接另一个数据即为链表
@@ -114,8 +114,4 @@ func (r *Ring) Len() int {
 		}
 	}
 	return count
-}
-
-func main() {
-
 }

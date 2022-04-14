@@ -3,7 +3,7 @@
  * @Date: 2022/4/14 16:05
  */
 
-package main
+package array
 
 import (
 	"fmt"
@@ -96,8 +96,4 @@ func (a *Array) Println() string {
 	}
 	result = fmt.Sprintf("%s]", result)
 	return result
-}
-
-func main() {
-
 }
