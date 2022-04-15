@@ -1,3 +1,3 @@
-module github.com/cyj19/data-structure
+module github.com/cyj19/algo
 
 go 1.17
