@@ -63,7 +63,7 @@ func (s *LinkStack) Pop() string {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	// 栈判空
-	if s.IsEmpty() {
+	if s.size == 0 {
 		panic("stack is empty")
 	}
 	// 头部元素
