@@ -26,8 +26,8 @@ func TestArray_AppendMany(t *testing.T) {
 	log.Println(a)
 }
 
-func TestArray_Println(t *testing.T) {
+func TestArray_Print(t *testing.T) {
 	a := Make(0, 0)
 	a.AppendMany(1, 2, 3, 4, 5)
-	log.Println(a.Println())
+	log.Println(a.Print())
 }

@@ -84,8 +84,8 @@ func (a *Array) Get(index int) int {
 	return a.array[index]
 }
 
-// Println 辅助打印
-func (a *Array) Println() string {
+// Print 辅助打印
+func (a *Array) Print() string {
 	result := "["
 	for i := 0; i < a.Len(); i++ {
 		if i == 0 {
@@ -94,6 +94,6 @@ func (a *Array) Println() string {
 		}
 		result = fmt.Sprintf("%s %d", result, a.Get(i))
 	}
-	result = fmt.Sprintf("%s]", result)
+	result += "]"
 	return result
 }

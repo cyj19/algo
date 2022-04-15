@@ -70,8 +70,6 @@ func (s *ArrayStack) Peek() string {
 }
 
 func (s *ArrayStack) Print() string {
-	s.mu.Lock()
-	defer s.mu.Unlock()
 	result := "["
 	for i := s.size - 1; i >= 0; i-- {
 		if i == s.size-1 {

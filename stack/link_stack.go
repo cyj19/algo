@@ -89,8 +89,6 @@ func (s *LinkStack) Peek() string {
 }
 
 func (s *LinkStack) Print() string {
-	s.mu.Lock()
-	defer s.mu.Unlock()
 	result := "["
 	p := s.root
 	for i := 0; i < s.Size(); i++ {
@@ -104,6 +102,6 @@ func (s *LinkStack) Print() string {
 		p = p.Next
 
 	}
-	result = fmt.Sprintf("%s]", result)
+	result += "]"
 	return result
 }
