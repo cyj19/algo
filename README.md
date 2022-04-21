@@ -8,3 +8,4 @@
 - [队列](https://github.com/cyj19/algo/tree/main/queue)
 - [列表](https://github.com/cyj19/algo/tree/main/list)
 - [集合](https://github.com/cyj19/algo/tree/main/set)
+- [树](https://github.com/cyj19/algo/tree/main/tree)
