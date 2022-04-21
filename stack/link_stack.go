@@ -17,7 +17,7 @@ import (
 // LinkNode 链表节点
 type LinkNode struct {
 	Next  *LinkNode
-	Value string
+	Value interface{}
 }
 
 // LinkStack 链表栈
@@ -36,7 +36,7 @@ func (s *LinkStack) IsEmpty() bool {
 }
 
 // Push 元素入栈
-func (s *LinkStack) Push(v string) {
+func (s *LinkStack) Push(v interface{}) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	// 栈顶为空，新增节点
@@ -59,7 +59,7 @@ func (s *LinkStack) Push(v string) {
 }
 
 // Pop 元素出栈
-func (s *LinkStack) Pop() string {
+func (s *LinkStack) Pop() interface{} {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	// 栈判空
@@ -78,7 +78,7 @@ func (s *LinkStack) Pop() string {
 }
 
 // Peek 获取栈顶元素，但不出栈
-func (s *LinkStack) Peek() string {
+func (s *LinkStack) Peek() interface{} {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	if s.IsEmpty() {

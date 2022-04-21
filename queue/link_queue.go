@@ -17,7 +17,7 @@ import (
 // LinkNode 链表节点
 type LinkNode struct {
 	Next  *LinkNode
-	Value string
+	Value interface{}
 }
 
 // LinkQueue 链表队列
@@ -35,7 +35,7 @@ func (q *LinkQueue) IsEmpty() bool {
 	return q.size == 0
 }
 
-func (q *LinkQueue) Add(v string) {
+func (q *LinkQueue) Add(v interface{}) {
 	q.mu.Lock()
 	defer q.mu.Unlock()
 
@@ -56,7 +56,7 @@ func (q *LinkQueue) Add(v string) {
 	q.size = q.size + 1
 }
 
-func (q *LinkQueue) Remove() string {
+func (q *LinkQueue) Remove() interface{} {
 	q.mu.Lock()
 	defer q.mu.Unlock()
 	if q.size == 0 {

@@ -21,11 +21,11 @@ type RingQueue struct {
 
 // ringQueue 环形队列
 type ringQueue struct {
-	array []string   // 底层切片
-	count int        // 队列中的实际元素数量
-	size  int        // 队列大小
-	top   int        // 队列顶部下标
-	mu    sync.Mutex // 互斥锁保证并发安全
+	array []interface{} // 底层切片
+	count int           // 队列中的实际元素数量
+	size  int           // 队列大小
+	top   int           // 队列顶部下标
+	mu    sync.Mutex    // 互斥锁保证并发安全
 }
 
 func NewRingQueue(size int) *RingQueue {
@@ -33,7 +33,7 @@ func NewRingQueue(size int) *RingQueue {
 		panic("queue size must large than 0")
 	}
 	queue := new(ringQueue)
-	queue.array = make([]string, size, size)
+	queue.array = make([]interface{}, size, size)
 	queue.size = size
 	return &RingQueue{queue: queue}
 }
@@ -59,7 +59,7 @@ func (q *RingQueue) IsFull() bool {
 }
 
 // Add 元素入队
-func (q *RingQueue) Add(v string) {
+func (q *RingQueue) Add(v interface{}) {
 	q.queue.mu.Lock()
 	defer q.queue.mu.Unlock()
 	// 判满
@@ -77,7 +77,7 @@ func (q *RingQueue) Add(v string) {
 }
 
 // Remove 元素出队
-func (q *RingQueue) Remove() string {
+func (q *RingQueue) Remove() interface{} {
 	q.queue.mu.Lock()
 	defer q.queue.mu.Unlock()
 	// 判空

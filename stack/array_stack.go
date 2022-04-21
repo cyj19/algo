@@ -17,9 +17,9 @@ import (
 
 // ArrayStack 数组栈
 type ArrayStack struct {
-	array []string   // 底层切片
-	size  int        // 栈的元素数量
-	mu    sync.Mutex // 互斥锁保证并发安全
+	array []interface{} // 底层切片
+	size  int           // 栈的元素数量
+	mu    sync.Mutex    // 互斥锁保证并发安全
 }
 
 // Size 获取栈元素数量
@@ -33,7 +33,7 @@ func (s *ArrayStack) IsEmpty() bool {
 }
 
 // Push 元素入栈
-func (s *ArrayStack) Push(v string) {
+func (s *ArrayStack) Push(v interface{}) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.array = append(s.array, v)
@@ -41,7 +41,7 @@ func (s *ArrayStack) Push(v string) {
 }
 
 // Pop 元素出栈
-func (s *ArrayStack) Pop() string {
+func (s *ArrayStack) Pop() interface{} {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -51,7 +51,7 @@ func (s *ArrayStack) Pop() string {
 
 	v := s.array[s.size-1]
 	// 创建新切片，空间占用不会越来越大，但移动次数可能会更多
-	newArray := make([]string, s.size-1, s.size-1)
+	newArray := make([]interface{}, s.size-1, s.size-1)
 	for i := 0; i < s.size-1; i++ {
 		newArray[i] = s.array[i]
 	}
@@ -61,7 +61,7 @@ func (s *ArrayStack) Pop() string {
 }
 
 // Peek 获取栈顶元素，但是不出栈
-func (s *ArrayStack) Peek() string {
+func (s *ArrayStack) Peek() interface{} {
 	if s.size == 0 {
 		panic("stack is empty")
 	}

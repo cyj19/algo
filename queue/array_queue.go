@@ -17,9 +17,9 @@ import (
 
 // ArrayQueue 数组队列
 type ArrayQueue struct {
-	array []string   // 底层切片
-	size  int        // 队列元素数量
-	mu    sync.Mutex // 互斥锁保证并发安全
+	array []interface{} // 底层切片
+	size  int           // 队列元素数量
+	mu    sync.Mutex    // 互斥锁保证并发安全
 }
 
 func (q *ArrayQueue) Size() int {
@@ -31,7 +31,7 @@ func (q *ArrayQueue) IsEmpty() bool {
 }
 
 // Add 元素入队
-func (q *ArrayQueue) Add(v string) {
+func (q *ArrayQueue) Add(v interface{}) {
 	q.mu.Lock()
 	defer q.mu.Unlock()
 	q.array = append(q.array, v)
@@ -39,7 +39,7 @@ func (q *ArrayQueue) Add(v string) {
 }
 
 // Remove 元素出队
-func (q *ArrayQueue) Remove() string {
+func (q *ArrayQueue) Remove() interface{} {
 	q.mu.Lock()
 	defer q.mu.Unlock()
 	if q.size == 0 {
@@ -47,7 +47,7 @@ func (q *ArrayQueue) Remove() string {
 	}
 	v := q.array[0]
 	// 创建新切片，空间占用不会越来越大
-	newArray := make([]string, q.size-1, q.size-1)
+	newArray := make([]interface{}, q.size-1, q.size-1)
 	// 原切片的数据复制到新切片
 	for i := 0; i < q.size-1; i++ {
 		newArray[i] = q.array[i+1]
