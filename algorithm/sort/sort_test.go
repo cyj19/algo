@@ -30,3 +30,9 @@ func TestInsertSort(t *testing.T) {
 	InsertSort(arr)
 	t.Log(arr)
 }
+
+func TestShellSort(t *testing.T) {
+	arr := []int{5, 9, 1, 6, 8, 14, 6, 49, 25, 4, 6, 3}
+	ShellSort(arr)
+	t.Log(arr)
+}
